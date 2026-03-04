@@ -1,7 +1,9 @@
+/*
+Marco Rondón, 1794984
+Mario Roda, 1792216
+*/
 # include <stdio.h>
 # include <stdlib.h>
-
-#define MAX_DADES 400
 
 typedef struct {
     int niu;
@@ -12,21 +14,31 @@ float mitjana(float [],int );
 
 int main(){
     FILE *dades;
-    int n, i, j, lrg = 0;
+    int n, i, j, ll, num_lin = 0, lrg = 0;
+        
+    Alu *alumnes;
     
-    Alu alumnes[MAX_DADES];
-    
-    dades=fopen("Llista.txt","r");
+    // Obrim el fitxer Llista.txt
+    dades=fopen("./Llista.txt","r");
     if(dades==NULL){
         printf("\nNo s'ha accedit al fitxer de dades\n");
         return 1;
     }
-    
-    while(!(fscanf(dades,"%i;",&n)==EOF)){
-        if(lrg==MAX_DADES){
-            printf("No hi ha prou espai reservat per guardar totes les dades\n");
-            return 2;
+    // Contem el nombre de línies
+    while((ll = fgetc(dades)) != EOF){
+        if (ll == '\n'){
+            num_lin++;
         }
+    }
+    printf("\nHi ha %d linies al document.\n",num_lin);
+    rewind(dades);
+    // Reservem memoria per l'estructura Alu tenint en compte el nombre d'alumnes
+    if ((alumnes = (Alu *)malloc(sizeof(Alu)*num_lin)) == NULL){
+        printf("Error: no hi ha espai suficient en la memoria.");
+        return 1;
+    }
+    // Llegim el document i guardem les dades en les estructures Alu.
+    while(!(fscanf(dades,"%i;",&n)==EOF)){
         alumnes[lrg].niu=n;
         for(i=0;i<4;i++){
             fscanf(dades,"%f",&alumnes[lrg].notes[i]);
@@ -36,6 +48,7 @@ int main(){
         lrg++;
     }
     fclose(dades);
+    // Imprimim les dades
     for(j=0;j<lrg;j++){
         printf("%d | ",alumnes[j].niu);
         for(i=0;i<4;i++){
@@ -46,6 +59,8 @@ int main(){
     }
     printf("\nS'ha llegit informacio de %d linies.\n\n",lrg);
     
+
+    free(alumnes);
     return 0;
 }
 

@@ -35,7 +35,7 @@ int main(){
     // Reservem memoria per l'estructura Alu tenint en compte el nombre d'alumnes
     if ((alumnes = (Alu *)malloc(sizeof(Alu)*num_lin)) == NULL){
         printf("Error: no hi ha espai suficient en la memoria.");
-        return 1;
+        return 2;
     }
     // Llegim el document i guardem les dades en les estructures Alu.
     while(!(fscanf(dades,"%i;",&n)==EOF)){
@@ -48,6 +48,17 @@ int main(){
         lrg++;
     }
     fclose(dades);
+    if ((alumnes = (Alu *)realloc(alumnes, (sizeof(Alu)*num_lin)+1)) == NULL){
+        printf("Error: no hi ha espai suficient en la memoria.");
+        return 2;
+    }
+    alumnes[num_lin].niu = 1234567;
+    alumnes[num_lin].notes[0] = 5.6;
+    alumnes[num_lin].notes[1] = 6.2;
+    alumnes[num_lin].notes[2] = 4.3;
+    alumnes[num_lin].notes[3] = 8.6;
+    alumnes[num_lin].notes[4] = mitjana(alumnes[num_lin].notes,4);
+    num_lin++;
     // Imprimim les dades
     for(j=0;j<num_lin;j++){
         printf("%d | ",alumnes[j].niu);
@@ -59,7 +70,6 @@ int main(){
     }
     printf("\nS'ha llegit informacio de %d linies.\n\n",lrg);
     
-
     free(alumnes);
     return 0;
 }

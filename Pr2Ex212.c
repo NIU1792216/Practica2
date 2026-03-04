@@ -19,7 +19,7 @@ int main(){
     Alu *alumnes;
     
     // Obrim el fitxer Llista.txt
-    dades=fopen("./Llista.txt","r");
+    dades=fopen("Y:/MatCad/2n Semestre/Algoritmia i combinatoria/Practica2/Llista.txt","r");
     if(dades==NULL){
         printf("\nNo s'ha accedit al fitxer de dades\n");
         return 1;
@@ -48,7 +48,7 @@ int main(){
         lrg++;
     }
     fclose(dades);
-    if ((alumnes = (Alu *)realloc(alumnes, (sizeof(Alu)*num_lin)+1)) == NULL){
+    if ((alumnes = (Alu *)realloc(alumnes, sizeof(Alu)*(num_lin+1))) == NULL){
         printf("Error: no hi ha espai suficient en la memoria.");
         return 2;
     }

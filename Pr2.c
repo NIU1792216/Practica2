@@ -16,7 +16,7 @@ int main(){
     
     Alu alumnes[MAX_DADES];
     
-    dades=fopen("Llista.txt","r");
+    dades=fopen("./Llista.txt","r");
     if(dades==NULL){
         printf("\nNo s'ha accedit al fitxer de dades\n");
         return 1;

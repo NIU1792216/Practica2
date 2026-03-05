@@ -57,6 +57,7 @@ int main(){
         printf("Error: no hi ha espai suficient en la memoria.");
         return 2;
     }
+    // Afegim les dades d'un alumne mes
     alumnes[num_lin].niu = 1234567;
     alumnes[num_lin].notes[0] = 5.6;
     alumnes[num_lin].notes[1] = 6.2;
@@ -69,10 +70,10 @@ int main(){
         printf("Error: no hi ha espai suficient en la memoria.");
         return 2;
     }
-    printf("\nS'ha llegit informacio de %d linies.\n\n",num_lin);
     
     ordenataula(alumnes,alumnesord,num_lin);
     imprimirtaula(num_lin,alumnesord);
+    printf("\nS'ha llegit informacio de %d linies.\n\n",num_lin);
     // Alliberem memoria dels apuntadors que utilitzem
     free(alumnes);
     free(alumnesord);
@@ -110,10 +111,10 @@ void ordenataula(Alu *alumnes, Alu *alumnesord, int num_lin){
         alumnesord[i] = alumnes[i];
     }
     /*
-    En aquest cas fem servir el mètode Bubble Sort per ordenar la taula. Existeixen
-    algorismes més eficients que no utilitzen bucles imbricats, com ara el Quick Sort,
-    però considerem innecessari augmentar la complexitat del codi, ja que s’escapa del
-    propòsit de la pràctica. Tot i això, creiem oportú fer-ne esment.
+    En aquest cas fem servir el metode Bubble Sort per ordenar la taula. Existeixen
+    algorismes mes eficients que no utilitzen bucles imbricats, com ara el Quick Sort,
+    pero considerem innecessari augmentar la complexitat del codi, ja que s’escapa del
+    proposit de la practica. Tot i aixo, creiem oportu fer-ne esment.
     */
     for(i=0;i<num_lin;i++){
         for(j=0;j<num_lin-i-1;j++){

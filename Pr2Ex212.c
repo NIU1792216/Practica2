@@ -53,6 +53,7 @@ int main(){
         printf("Error: no hi ha espai suficient en la memoria.");
         return 2;
     }
+    // Afegim les dades d'un alumne mes
     alumnes[num_lin].niu = 1234567;
     alumnes[num_lin].notes[0] = 5.6;
     alumnes[num_lin].notes[1] = 6.2;

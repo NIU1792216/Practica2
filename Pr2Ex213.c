@@ -54,6 +54,7 @@ int main(){
         printf("Error: no hi ha espai suficient en la memoria.");
         return 2;
     }
+    // Afegim les dades d'un alumne mes
     alumnes[num_lin].niu = 1234567;
     alumnes[num_lin].notes[0] = 5.6;
     alumnes[num_lin].notes[1] = 6.2;
@@ -61,9 +62,9 @@ int main(){
     alumnes[num_lin].notes[3] = 8.6;
     alumnes[num_lin].notes[4] = mitjana(alumnes[num_lin].notes,4);
     num_lin++;
-    printf("\nS'ha llegit informacio de %d linies.\n\n",num_lin);
-    
+    // Cridem a la funcio per imprimir la taula
     imprimirtaula(num_lin,alumnes);
+    printf("\nS'ha llegit informacio de %d linies.\n\n",num_lin);
     // Alliberem memoria de l'unic apuntador que utilitzem
     free(alumnes);
     return 0;

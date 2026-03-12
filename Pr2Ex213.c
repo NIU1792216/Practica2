@@ -15,7 +15,7 @@ void imprimirtaula(int num_lin, Alu *alumnes);
 
 int main(){
     FILE *dades;
-    int n, i, j, ll, num_lin = 0, lrg = 0;
+    int n, i, ll, num_lin = 0, lrg = 0;
         
     Alu *alumnes;
     
